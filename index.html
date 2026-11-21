@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>¡Feliz Navidad! - Página de Prueba</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top, #1b4332 0%, #081c15 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      padding: 1rem;
+    }
+
+    /* Copos de nieve animados */
+    .snowflake {
+      position: fixed;
+      top: -10%;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 1.2rem;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(115vh) rotate(360deg);
+      }
+    }
+
+    /* Tarjeta principal */
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      border: 2px solid rgba(255, 215, 0, 0.45);
+      border-radius: 20px;
+      padding: 2.5rem 2rem;
+      max-width: 460px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+      z-index: 2;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #c1121f;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      border: 1px solid #ffd166;
+    }
+
+    .tree {
+      font-size: 3.5rem;
+      margin-bottom: 0.5rem;
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #ffd166;
+      margin-bottom: 0.6rem;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    p {
+      color: #e9ecef;
+      line-height: 1.5;
+      margin-bottom: 1.2rem;
+      font-size: 0.98rem;
+    }
+
+    #deseo {
+      min-height: 3.2rem;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 1.3rem;
+      font-style: italic;
+      color: #ffe8a3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    button {
+      background: linear-gradient(135deg, #d62828, #9b2226);
+      color: #fff;
+      border: 1px solid #ffd166;
+      padding: 0.75rem 1.5rem;
+      font-size: 0.95rem;
+      font-weight: bold;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(214, 40, 40, 0.5);
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #a3b18a;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <span class="badge">Proyecto Web • Clase</span>
+    <div class="tree">🎄</div>
+    <h1>¡Feliz Navidad!</h1>
+    <p>Que esta temporada llene tu hogar de paz, alegría y mucho éxito en todos tus proyectos.</p>
+
+    <div id="deseo">✨ Presiona el botón para abrir tu mensaje navideño ✨</div>
+
+    <button onclick="nuevoDeseo()">🎁 Abrir mensaje</button>
+
+    <footer>Publicado con GitHub Pages • 2026</footer>
+  </div>
+
+  <script>
+    // Generar copos de nieve dinámicos
+    const totalCopos = 25;
+    for (let i = 0; i < totalCopos; i++) {
+      const copo = document.createElement('div');
+      copo.className = 'snowflake';
+      copo.textContent = '❄';
+      copo.style.left = Math.random() * 100 + 'vw';
+      copo.style.animationDuration = (Math.random() * 4 + 4) + 's';
+      copo.style.animationDelay = Math.random() * 5 + 's';
+      copo.style.fontSize = (Math.random() * 10 + 12) + 'px';
+      document.body.appendChild(copo);
+    }
+
+    // Mensajes navideños interactivos
+    const deseos = [
+      "🎅 ¡Que se cumplan todas tus metas este cierre de año!",
+      "🌟 Que nunca falte salud, unión y buenos momentos en familia.",
+      "🎄 ¡Éxito total en tus entregas finales y proyectos!",
+      "✨ Que la magia de la Navidad ilumine cada nuevo comienzo."
+    ];
+
+    function nuevoDeseo() {
+      const aleatorio = deseos[Math.floor(Math.random() * deseos.length)];
+      document.getElementById('deseo').textContent = aleatorio;
+    }
+  </script>
+
+</body>
+</html>
